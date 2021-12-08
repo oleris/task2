@@ -4,6 +4,15 @@
 #include <vector>
 
 std::vector<Composite*> allGroups;
+
+void SeeAllGroups()
+{
+	std::cout << "All groups:" << std::endl;
+	for (Composite* composite : allGroups)
+	{
+		std::cout << composite->GetName() << std::endl;
+	}
+}
 void CreateGroup()
 {
 	std::cout <<"Enter name of group:"<< std::endl;
@@ -28,6 +37,7 @@ void addstudent()
 	
 	std::cout << "Student was created." << std::endl;
 	std::cout << "in what group student should be added?" << std::endl;
+	SeeAllGroups();
 	std::cin >> Group;
 	for (Composite* composite : allGroups)
 	{
@@ -70,23 +80,28 @@ int main()
 		{
 			std::cout << "\x1B[2J\x1B[H";
 			std::cout << "\n";
-			std::cout << "All groups:" << std::endl;
-			for (Composite* composite : allGroups)
-			{
-				std::cout << composite->GetName() << std::endl;
-			}
+			SeeAllGroups();
+		
 		}
 		else if (input == "3")
 		{
 			std::cout << "\x1B[2J\x1B[H";
 			std::cout << "\n";
 			addstudent();
+
 		}
 		else if (input == "4")
 		{
 			std::cout << "\x1B[2J\x1B[H";
 			std::cout << "\n";
 			SeeGroup();
+		}
+		else
+		{
+			std::cout << "\x1B[2J\x1B[H";
+			std::cout << "Wrong input" << std::endl;
+			std::cout << "\n";
+			
 		}
 	}
 }
